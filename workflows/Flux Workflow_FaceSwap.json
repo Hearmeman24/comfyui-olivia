@@ -1,8 +1,8 @@
 {
   "id": "bfab5f91-8df3-43eb-9b95-4ce8898571a5",
   "revision": 0,
-  "last_node_id": 162,
-  "last_link_id": 268,
+  "last_node_id": 163,
+  "last_link_id": 269,
   "nodes": [
     {
       "id": 91,
@@ -858,36 +858,6 @@
       "widgets_values": []
     },
     {
-      "id": 104,
-      "type": "PreviewImage",
-      "pos": [
-        -4460.32080078125,
-        1277.4150390625
-      ],
-      "size": [
-        456.1883239746094,
-        735.3143920898438
-      ],
-      "flags": {},
-      "order": 24,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 191
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.39",
-        "Node name for S&R": "PreviewImage",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": []
-    },
-    {
       "id": 112,
       "type": "GetNode",
       "pos": [
@@ -909,7 +879,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            191
+            269
           ]
         }
       ],
@@ -2056,6 +2026,38 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 163,
+      "type": "SaveImage",
+      "pos": [
+        -4339.65576171875,
+        1359.5211181640625
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 269
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "Upscaled"
+      ]
     }
   ],
   "links": [
@@ -2200,14 +2202,6 @@
       111,
       0,
       103,
-      0,
-      "IMAGE"
-    ],
-    [
-      191,
-      112,
-      0,
-      104,
       0,
       "IMAGE"
     ],
@@ -2434,6 +2428,14 @@
       134,
       0,
       "MODEL"
+    ],
+    [
+      269,
+      112,
+      0,
+      163,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -2520,10 +2522,10 @@
   "extra": {
     "ue_links": [],
     "ds": {
-      "scale": 0.9646149645000015,
+      "scale": 1.1671841070450009,
       "offset": [
-        5480.006565585293,
-        -288.59893194643655
+        5268.956721615471,
+        -1082.5288139971337
       ]
     },
     "links_added_by_ue": [],
