@@ -120,17 +120,6 @@ download_model "https://huggingface.co/24xx/segm/resolve/main/face_yolov8m-seg_6
 # Download SAM model
 download_model "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_b_01ec64.pth" "$NETWORK_VOLUME/ComfyUI/models/sams/sam_vit_b_01ec64.pth"
 
-mkdir -p "$NETWORK_VOLUME/ComfyUI/models/ultralytics/bbox"
-if [ ! -f "$NETWORK_VOLUME/ComfyUI/models/ultralytics/bbox/Eyes.pt" ]; then
-    if [ -f "/Eyes.pt" ]; then
-        mv "/Eyes.pt" "$NETWORK_VOLUME/ComfyUI/models/ultralytics/bbox/Eyes.pt"
-        echo "Moved Eyes.pt to the correct location."
-    else
-        echo "Eyes.pt not found in the root directory."
-    fi
-else
-    echo "Eyes.pt already exists. Skipping."
-fi
 if [ ! -f "$NETWORK_VOLUME/ComfyUI/models/upscale_models/4xLSDIR.pth" ]; then
     if [ -f "/4xLSDIR.pth" ]; then
         mv "/4xLSDIR.pth" "$NETWORK_VOLUME/ComfyUI/models/upscale_models/4xLSDIR.pth"
@@ -158,7 +147,8 @@ fi
 echo "Finished downloading models!"
 
 declare -A MODEL_CATEGORIES=(
-    ["$NETWORK_VOLUME/ComfyUI/models/diffusion_models"]="$CHECKPOINT_IDS_TO_DOWNLOAD"
+    ["$NETWORK_VOLUME/ComfyUI/models/diffusion_models"]="$FLUX_MODEL_IDS_TO_DOWNLOAD"
+    ["$NETWORK_VOLUME/ComfyUI/models/checkpoints"]="$CHECKPOINT_IDS_TO_DOWNLOAD"
     ["$NETWORK_VOLUME/ComfyUI/models/loras"]="$LORAS_IDS_TO_DOWNLOAD"
 )
 
@@ -218,7 +208,7 @@ mkdir -p "$WORKFLOW_DIR"
 # Ensure the file exists in the current directory before moving it
 cd /
 
-SOURCE_DIR="/getphat-flux/workflows"
+SOURCE_DIR="/comfyui-olivia/workflows"
 
 # Ensure destination directory exists
 mkdir -p "$WORKFLOW_DIR"
