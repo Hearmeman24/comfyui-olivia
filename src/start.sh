@@ -55,6 +55,7 @@ DIFFUSION_MODELS_DIR="$NETWORK_VOLUME/ComfyUI/models/diffusion_models"
 TEXT_ENCODERS_DIR="$NETWORK_VOLUME/ComfyUI/models/text_encoders"
 PULID_DIR="$NETWORK_VOLUME/ComfyUI/models/pulid"
 VAE_DIR="$NETWORK_VOLUME/ComfyUI/models/vae"
+LORA_DIR="$NETWORK_VOLUME/ComfyUI/models/loras"
 CONTROLNET_DIR="$NETWORK_VOLUME/ComfyUI/models/controlnet"
 
 if [ ! -d "$COMFYUI_DIR" ]; then
@@ -174,6 +175,9 @@ for TARGET_DIR in "${!MODEL_CATEGORIES[@]}"; do
 done
 
 echo "📋 Scheduled $download_count downloads in background"
+
+cd $LORA_DIR
+wget $lora_url
 
 # Wait for all downloads to complete
 echo "⏳ Waiting for downloads to complete..."
