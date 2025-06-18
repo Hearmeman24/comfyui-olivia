@@ -44,7 +44,9 @@ fi
 curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 mv filebrowser /usr/local/bin/
 chmod +x /usr/local/bin/filebrowser
-filebrowser -r $NETWORK_VOLUME -a 0.0.0.0 -p 8080 > "$NETWORK_VOLUME/filebrowser.log" 2>&1 &
+filebrowser -d $NETWORK_VOLUME/filebrowser.db config init
+filebrowser -d $NETWORK_VOLUME/filebrowser.db users add $FB_USERNAME $FB_PASSWORD --perm.admin
+filebrowser -d $NETWORK_VOLUME/filebrowser.db -r $NETWORK_VOLUME -a 0.0.0.0 -p 8080 > "$NETWORK_VOLUME/filebrowser.log" 2>&1 &
 
 COMFYUI_DIR="$NETWORK_VOLUME/ComfyUI"
 CUSTOM_NODES_DIR="$NETWORK_VOLUME/ComfyUI/custom_nodes"
