@@ -178,8 +178,13 @@ done
 
 echo "📋 Scheduled $download_count downloads in background"
 
+
 cd $LORA_DIR
-wget $lora_url
+IFS=',' read -r -a url_array <<< "$lora_urls"
+for url in "${url_array[@]}"
+do
+   wget "$url"
+done
 
 # Wait for all downloads to complete
 echo "⏳ Waiting for downloads to complete..."
